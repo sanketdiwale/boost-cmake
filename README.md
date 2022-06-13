@@ -8,7 +8,7 @@ Easy Boost integration in CMake projects!
 
 Install the submodule in your project structure:
 ```
-git submodule add https://github.com/Orphis/boost-cmake.git
+git submodule add https://github.com/sanketdiwale/boost-cmake.git
 ```
 Use it! In your CMakeLists.txt file:
 
