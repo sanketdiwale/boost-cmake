@@ -1,6 +1,11 @@
 cmake_minimum_required(VERSION 3.12)
 project(Boost-CMake)
 
+if(MSVC)
+set_property(GLOBAL PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded") #"MultiThreaded$<$<CONFIG:Debug>:Debug>")
+add_link_options(/verbose /NODEFAULTLIB:MSVCRT)
+endif()
+
 option(BOOST_DISABLE_TESTS "Do not build test targets, even if building standalone" OFF)
 
 set(BOOST_URL "https://boostorg.jfrog.io/artifactory/main/release/1.71.0/source/boost_1_71_0.tar.bz2" CACHE STRING "Boost download URL")
