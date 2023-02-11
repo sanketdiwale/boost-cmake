@@ -4,6 +4,8 @@ _add_boost_lib(
     ${BOOST_SOURCE}/libs/atomic/src/lock_pool.cpp
     ${BOOST_SOURCE}/libs/atomic/src/lock_pool_init1.ipp
     ${BOOST_SOURCE}/libs/atomic/src/lock_pool_init256.ipp
+  INCLUDE_PRIVATE
+  ${BOOST_SOURCE}/libs/atomic/src/
   DEFINE_PRIVATE
     BOOST_ATOMIC_STATIC_LINK=1
     BOOST_ATOMIC_SOURCE
