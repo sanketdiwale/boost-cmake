@@ -9,6 +9,7 @@ _add_boost_lib(
   DEFINE_PRIVATE
     BOOST_DATE_TIME_STATIC_LINK
     DATE_TIME_INLINE
+    BOOST_DATE_TIME_SOURCE
 )
 
 _add_boost_test(
