@@ -7,10 +7,13 @@ add_link_options(/verbose /NODEFAULTLIB:MSVCRT)
 endif()
 
 option(BOOST_DISABLE_TESTS "Do not build test targets, even if building standalone" OFF)
-
+option(BOOST_NO_CXX11_SCOPED_ENUMS ON)
+set(BOOST_NO_CXX11_SCOPED_ENUMS TRUE)
 set(BOOST_URL "https://boostorg.jfrog.io/artifactory/main/release/1.81.0/source/boost_1_81_0.tar.bz2" CACHE STRING "Boost download URL")
 set(BOOST_URL_SHA256 "71feeed900fbccca04a3b4f2f84a7c217186f28a940ed8b7ed4725986baf99fa" CACHE STRING "Boost download URL SHA256 checksum")
-
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20")
 include(FetchContent)
 FetchContent_Declare(
   Boost

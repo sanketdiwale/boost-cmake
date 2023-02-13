@@ -39,19 +39,19 @@ _add_boost_lib(
   NAME locale
   SOURCES
     ${ICU_SRCS}
-    ${BOOST_SOURCE}/libs/locale/src/encoding/codepage.cpp
-    ${BOOST_SOURCE}/libs/locale/src/shared/date_time.cpp
-    ${BOOST_SOURCE}/libs/locale/src/shared/format.cpp
-    ${BOOST_SOURCE}/libs/locale/src/shared/formatting.cpp
-    ${BOOST_SOURCE}/libs/locale/src/shared/generator.cpp
-    ${BOOST_SOURCE}/libs/locale/src/shared/ids.cpp
-    ${BOOST_SOURCE}/libs/locale/src/shared/localization_backend.cpp
-    ${BOOST_SOURCE}/libs/locale/src/shared/message.cpp
-    ${BOOST_SOURCE}/libs/locale/src/shared/mo_lambda.cpp
-    ${BOOST_SOURCE}/libs/locale/src/util/codecvt_converter.cpp
-    ${BOOST_SOURCE}/libs/locale/src/util/default_locale.cpp
-    ${BOOST_SOURCE}/libs/locale/src/util/info.cpp
-    ${BOOST_SOURCE}/libs/locale/src/util/locale_data.cpp
+    ${BOOST_SOURCE}/libs/locale/src/boost/locale/encoding/codepage.cpp
+    ${BOOST_SOURCE}/libs/locale/src/boost/locale/shared/date_time.cpp
+    ${BOOST_SOURCE}/libs/locale/src/boost/locale/shared/format.cpp
+    ${BOOST_SOURCE}/libs/locale/src/boost/locale/shared/formatting.cpp
+    ${BOOST_SOURCE}/libs/locale/src/boost/locale/shared/generator.cpp
+    ${BOOST_SOURCE}/libs/locale/src/boost/locale/shared/ids.cpp
+    ${BOOST_SOURCE}/libs/locale/src/boost/locale/shared/localization_backend.cpp
+    ${BOOST_SOURCE}/libs/locale/src/boost/locale/shared/message.cpp
+    ${BOOST_SOURCE}/libs/locale/src/boost/locale/shared/mo_lambda.cpp
+    ${BOOST_SOURCE}/libs/locale/src/boost/locale/util/codecvt_converter.cpp
+    ${BOOST_SOURCE}/libs/locale/src/boost/locale/util/default_locale.cpp
+    ${BOOST_SOURCE}/libs/locale/src/boost/locale/util/info.cpp
+    ${BOOST_SOURCE}/libs/locale/src/boost/locale/util/locale_data.cpp
 )
 
 # Convenience interface library to link deps to both main library and tests
@@ -60,15 +60,15 @@ target_link_libraries(Boost_locale PRIVATE Boost_locale_deps)
 
 if(BOOST_LOCALE_ENABLE_ICU_BACKEND AND ICU_FOUND)
   target_sources(Boost_locale PRIVATE
-    ${BOOST_SOURCE}/libs/locale/src/icu/boundary.cpp
-    ${BOOST_SOURCE}/libs/locale/src/icu/codecvt.cpp
-    ${BOOST_SOURCE}/libs/locale/src/icu/collator.cpp
-    ${BOOST_SOURCE}/libs/locale/src/icu/conversion.cpp
-    ${BOOST_SOURCE}/libs/locale/src/icu/date_time.cpp
-    ${BOOST_SOURCE}/libs/locale/src/icu/formatter.cpp
-    ${BOOST_SOURCE}/libs/locale/src/icu/icu_backend.cpp
-    ${BOOST_SOURCE}/libs/locale/src/icu/numeric.cpp
-    ${BOOST_SOURCE}/libs/locale/src/icu/time_zone.cpp
+    ${BOOST_SOURCE}/libs/locale/src/boost/locale/icu/boundary.cpp
+    ${BOOST_SOURCE}/libs/locale/src/boost/locale/icu/codecvt.cpp
+    ${BOOST_SOURCE}/libs/locale/src/boost/locale/icu/collator.cpp
+    ${BOOST_SOURCE}/libs/locale/src/boost/locale/icu/conversion.cpp
+    ${BOOST_SOURCE}/libs/locale/src/boost/locale/icu/date_time.cpp
+    ${BOOST_SOURCE}/libs/locale/src/boost/locale/icu/formatter.cpp
+    ${BOOST_SOURCE}/libs/locale/src/boost/locale/icu/icu_backend.cpp
+    ${BOOST_SOURCE}/libs/locale/src/boost/locale/icu/numeric.cpp
+    ${BOOST_SOURCE}/libs/locale/src/boost/locale/icu/time_zone.cpp
   )
   target_link_libraries(Boost_locale_deps INTERFACE
     Boost::thread
@@ -81,11 +81,11 @@ endif()
 
 if(BOOST_LOCALE_ENABLE_STD_BACKEND)
   target_sources(Boost_locale PRIVATE
-    ${BOOST_SOURCE}/libs/locale/src/std/codecvt.cpp
-    ${BOOST_SOURCE}/libs/locale/src/std/collate.cpp
-    ${BOOST_SOURCE}/libs/locale/src/std/converter.cpp
-    ${BOOST_SOURCE}/libs/locale/src/std/numeric.cpp
-    ${BOOST_SOURCE}/libs/locale/src/std/std_backend.cpp
+    ${BOOST_SOURCE}/libs/locale/src/boost/locale/std/codecvt.cpp
+    ${BOOST_SOURCE}/libs/locale/src/boost/locale/std/collate.cpp
+    ${BOOST_SOURCE}/libs/locale/src/boost/locale/std/converter.cpp
+    ${BOOST_SOURCE}/libs/locale/src/boost/locale/std/numeric.cpp
+    ${BOOST_SOURCE}/libs/locale/src/boost/locale/std/std_backend.cpp
   )
 else()
   target_compile_definitions(Boost_locale_deps INTERFACE BOOST_LOCALE_NO_STD_BACKEND=1)
@@ -100,10 +100,10 @@ endif()
 
 if(BOOST_LOCALE_ENABLE_WINAPI_BACKEND)
   target_sources(Boost_locale PRIVATE
-    ${BOOST_SOURCE}/libs/locale/src/win32/collate.cpp
-    ${BOOST_SOURCE}/libs/locale/src/win32/converter.cpp
-    ${BOOST_SOURCE}/libs/locale/src/win32/numeric.cpp
-    ${BOOST_SOURCE}/libs/locale/src/win32/win_backend.cpp
+    ${BOOST_SOURCE}/libs/locale/src/boost/locale/win32/collate.cpp
+    ${BOOST_SOURCE}/libs/locale/src/boost/locale/win32/converter.cpp
+    ${BOOST_SOURCE}/libs/locale/src/boost/locale/win32/numeric.cpp
+    ${BOOST_SOURCE}/libs/locale/src/boost/locale/win32/win_backend.cpp
   )
 else()
   target_compile_definitions(Boost_locale_deps INTERFACE BOOST_LOCALE_NO_WINAPI_BACKEND=1)
@@ -111,11 +111,11 @@ endif()
 
 if(BOOST_LOCALE_ENABLE_POSIX_BACKEND)
   target_sources(Boost_locale PRIVATE
-    ${BOOST_SOURCE}/libs/locale/src/posix/collate.cpp
-    ${BOOST_SOURCE}/libs/locale/src/posix/converter.cpp
-    ${BOOST_SOURCE}/libs/locale/src/posix/numeric.cpp
-    ${BOOST_SOURCE}/libs/locale/src/posix/codecvt.cpp
-    ${BOOST_SOURCE}/libs/locale/src/posix/posix_backend.cpp
+    ${BOOST_SOURCE}/libs/locale/src/boost/locale/posix/collate.cpp
+    ${BOOST_SOURCE}/libs/locale/src/boost/locale/posix/converter.cpp
+    ${BOOST_SOURCE}/libs/locale/src/boost/locale/posix/numeric.cpp
+    ${BOOST_SOURCE}/libs/locale/src/boost/locale/posix/codecvt.cpp
+    ${BOOST_SOURCE}/libs/locale/src/boost/locale/posix/posix_backend.cpp
   )
 else()
   target_compile_definitions(Boost_locale_deps INTERFACE BOOST_LOCALE_NO_POSIX_BACKEND=1)
@@ -123,7 +123,7 @@ endif()
 
 if(USE_WINDOWS AND (BOOST_LOCALE_ENABLE_WINAPI_BACKEND OR BOOST_LOCALE_ENABLE_STD_BACKEND))
   target_sources(Boost_locale PRIVATE
-    ${BOOST_SOURCE}/libs/locale/src/win32/lcid.cpp
+    ${BOOST_SOURCE}/libs/locale/src/boost/locale/win32/lcid.cpp
   )
 endif()
 
@@ -131,7 +131,7 @@ if(BOOST_LOCALE_ENABLE_POSIX_BACKEND
   OR BOOST_LOCALE_ENABLE_STD_BACKEND
   OR BOOST_LOCALE_ENABLE_WINAPI_BACKEND)
   target_sources(Boost_locale PRIVATE
-    ${BOOST_SOURCE}/libs/locale/src/util/gregorian.cpp
+    ${BOOST_SOURCE}/libs/locale/src/boost/locale/util/gregorian.cpp
   )
 endif()
 
